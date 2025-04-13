@@ -1,0 +1,1075 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="No Mercy Game - 3D interactive narrative game focusing on family relationships and values. Explore choices that affect the story's progression.">
+    <meta name="keywords" content="No Mercy Game, interactive narrative, 3D game, family relationships, story-driven game">
+    <meta name="author" content="No Mercy Game Information">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="No Mercy Game - Interactive Narrative Experience">
+    <meta property="og:description" content="A 3D interactive narrative game focusing on family relationships and values with multiple story paths.">
+    <meta property="og:image" content="https://yourwebsite.com/images/no-mercy-game-preview.jpg">
+    <meta property="og:url" content="https://yourwebsite.com">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="canonical" href="https://yourwebsite.com">
+    <title>No Mercy Game | Interactive Narrative Gaming Experience</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* 基础重置样式 */
+        *, ::before, ::after {
+            box-sizing: border-box;
+            border-width: 0;
+            border-style: solid;
+            border-color: #e5e7eb;
+        }
+        
+        html {
+            line-height: 1.5;
+            -webkit-text-size-adjust: 100%;
+            -moz-tab-size: 4;
+            tab-size: 4;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            margin: 0;
+            line-height: inherit;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+        
+        /* 自定义苹果风格 */
+        :root {
+            --apple-gray: #F5F5F7;
+            --apple-blue: #007AFF;
+            --apple-dark-gray: #333333;
+            --apple-light-gray: #E5E5EA;
+        }
+        
+        /* 颜色类 */
+        .bg-apple-gray, .bg-apple-gray-background {
+            background-color: var(--apple-gray);
+        }
+        
+        .bg-apple-blue, .bg-blue-button {
+            background-color: var(--apple-blue);
+        }
+        
+        .text-apple-blue, .blue-text {
+            color: var(--apple-blue);
+        }
+        
+        .hover-apple-blue:hover {
+            color: var(--apple-blue);
+        }
+        
+        .text-white {
+            color: white;
+        }
+        
+        .text-gray-800 {
+            color: #1f2937;
+        }
+        
+        .text-gray-600 {
+            color: #4b5563;
+        }
+        
+        .text-sm {
+            font-size: 0.875rem;
+            line-height: 1.25rem;
+        }
+        
+        .bg-white {
+            background-color: white;
+        }
+        
+        .bg-gradient-to-r {
+            background-image: linear-gradient(to right, var(--tw-gradient-stops));
+        }
+        
+        .from-gray-800 {
+            --tw-gradient-from: #1f2937;
+            --tw-gradient-to: rgb(31 41 55 / 0);
+            --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+        }
+        
+        .to-gray-900 {
+            --tw-gradient-to: #111827;
+        }
+        
+        /* 卡片和按钮样式 */
+        .apple-shadow {
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        
+        .apple-card {
+            border-radius: 12px;
+            background-color: white;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        
+        .apple-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        
+        .apple-button {
+            background-color: var(--apple-blue);
+            color: white;
+            border-radius: 8px;
+            padding: 0.5rem 1.25rem;
+            font-weight: 500;
+            transition: background-color 0.2s ease;
+            display: inline-block;
+            text-decoration: none;
+        }
+        
+        .apple-button:hover {
+            background-color: #0056b3;
+        }
+        
+        /* 布局类 */
+        .container {
+            width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+        
+        .flex {
+            display: flex;
+        }
+        
+        .flex-col {
+            flex-direction: column;
+        }
+        
+        .flex-grow {
+            flex-grow: 1;
+        }
+        
+        .flex-wrap {
+            flex-wrap: wrap;
+        }
+        
+        .items-center {
+            align-items: center;
+        }
+        
+        .justify-center {
+            justify-content: center;
+        }
+        
+        .justify-between {
+            justify-content: space-between;
+        }
+        
+        .space-x-6 > * + * {
+            margin-left: 1.5rem;
+        }
+        
+        .space-y-6 > * + * {
+            margin-top: 1.5rem;
+        }
+        
+        .space-y-12 > * + * {
+            margin-top: 3rem;
+        }
+        
+        .grid {
+            display: grid;
+        }
+        
+        .gap-3 {
+            gap: 0.75rem;
+        }
+        
+        .gap-6 {
+            gap: 1.5rem;
+        }
+        
+        .gap-8 {
+            gap: 2rem;
+        }
+        
+        .grid-cols-1 {
+            grid-template-columns: repeat(1, minmax(0, 1fr));
+        }
+        
+        .min-h-screen {
+            min-height: 100vh;
+        }
+        
+        .p-2 {
+            padding: 0.5rem;
+        }
+        
+        .p-6 {
+            padding: 1.5rem;
+        }
+        
+        .p-8 {
+            padding: 2rem;
+        }
+        
+        .py-1 {
+            padding-top: 0.25rem;
+            padding-bottom: 0.25rem;
+        }
+        
+        .px-3 {
+            padding-left: 0.75rem;
+            padding-right: 0.75rem;
+        }
+        
+        .py-2 {
+            padding-top: 0.5rem;
+            padding-bottom: 0.5rem;
+        }
+        
+        .px-4 {
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+        
+        .py-3 {
+            padding-top: 0.75rem;
+            padding-bottom: 0.75rem;
+        }
+        
+        .py-4 {
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+        
+        .py-8 {
+            padding-top: 2rem;
+            padding-bottom: 2rem;
+        }
+        
+        .py-12 {
+            padding-top: 3rem;
+            padding-bottom: 3rem;
+        }
+        
+        .mb-2 {
+            margin-bottom: 0.5rem;
+        }
+        
+        .mb-4 {
+            margin-bottom: 1rem;
+        }
+        
+        .mb-6 {
+            margin-bottom: 1.5rem;
+        }
+        
+        .mb-8 {
+            margin-bottom: 2rem;
+        }
+        
+        .mb-16 {
+            margin-bottom: 4rem;
+        }
+        
+        .mr-3 {
+            margin-right: 0.75rem;
+        }
+        
+        .mx-auto {
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .max-w-lg {
+            max-width: 32rem;
+        }
+        
+        .max-w-3xl {
+            max-width: 48rem;
+        }
+        
+        .scroll-mt-20 {
+            scroll-margin-top: 5rem;
+        }
+        
+        /* 文本类 */
+        .text-center {
+            text-align: center;
+        }
+        
+        .text-lg {
+            font-size: 1.125rem;
+            line-height: 1.75rem;
+        }
+        
+        .text-xl {
+            font-size: 1.25rem;
+            line-height: 1.75rem;
+        }
+        
+        .text-2xl {
+            font-size: 1.5rem;
+            line-height: 2rem;
+        }
+        
+        .text-3xl {
+            font-size: 1.875rem;
+            line-height: 2.25rem;
+        }
+        
+        .font-medium {
+            font-weight: 500;
+        }
+        
+        .font-semibold {
+            font-weight: 600;
+        }
+        
+        .font-bold {
+            font-weight: 700;
+        }
+        
+        .whitespace-nowrap {
+            white-space: nowrap;
+        }
+        
+        .relative {
+            position: relative;
+        }
+        
+        .absolute {
+            position: absolute;
+        }
+        
+        .fixed {
+            position: fixed;
+        }
+        
+        .sticky {
+            position: sticky;
+        }
+        
+        .top-0 {
+            top: 0;
+        }
+        
+        .top-4 {
+            top: 1rem;
+        }
+        
+        .left-0 {
+            left: 0;
+        }
+        
+        .right-0 {
+            right: 0;
+        }
+        
+        .right-4 {
+            right: 1rem;
+        }
+        
+        .bottom-0 {
+            bottom: 0;
+        }
+        
+        .z-10 {
+            z-index: 10;
+        }
+        
+        .z-40 {
+            z-index: 40;
+        }
+        
+        .z-50 {
+            z-index: 50;
+        }
+        
+        .w-1 {
+            width: 0.25rem;
+        }
+        
+        .w-6 {
+            width: 1.5rem;
+        }
+        
+        .w-8 {
+            width: 2rem;
+        }
+        
+        .h-6 {
+            height: 1.5rem;
+        }
+        
+        .h-8 {
+            height: 2rem;
+        }
+        
+        .h-full {
+            height: 100%;
+        }
+        
+        .transform {
+            transform: translateX(0) translateY(0) rotate(0) skewX(0) skewY(0) scaleX(1) scaleY(1);
+        }
+        
+        .translate-x-1\/2 {
+            --tw-translate-x: 50%;
+            transform: var(--tw-transform);
+        }
+        
+        .transition-colors {
+            transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+            transition-duration: 150ms;
+        }
+        
+        .rounded-full {
+            border-radius: 9999px;
+        }
+        
+        .rounded-lg {
+            border-radius: 0.5rem;
+        }
+        
+        .border {
+            border-width: 1px;
+        }
+        
+        .border-gray-300 {
+            border-color: #d1d5db;
+        }
+        
+        .focus\:outline-none:focus {
+            outline: 2px solid transparent;
+            outline-offset: 2px;
+        }
+        
+        .focus\:ring-2:focus {
+            --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+            --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+            box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
+        }
+        
+        .focus\:ring-apple-blue:focus {
+            --tw-ring-color: var(--apple-blue);
+        }
+        
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
+        
+        /* 移动端导航样式 */
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0,0,0,0.9);
+            z-index: 50;
+        }
+        
+        .mobile-nav.active {
+            display: flex;
+        }
+        
+        /* 语言选择下拉菜单样式 */
+        .language-selector {
+            position: relative;
+            margin-left: 1.5rem;
+        }
+        
+        .language-selector select {
+            appearance: none;
+            background-color: transparent;
+            border: 1px solid #d1d5db;
+            border-radius: 0.375rem;
+            padding: 0.25rem 2rem 0.25rem 0.75rem;
+            font-size: 0.875rem;
+            cursor: pointer;
+            color: #4b5563;
+        }
+        
+        .language-selector::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            right: 0.75rem;
+            transform: translateY(-50%);
+            width: 0.5rem;
+            height: 0.5rem;
+            border-right: 2px solid #4b5563;
+            border-bottom: 2px solid #4b5563;
+            transform-origin: center;
+            transform: translateY(-50%) rotate(45deg);
+            pointer-events: none;
+        }
+        
+        /* 媒体查询 - 响应式设计 */
+        @media (min-width: 640px) {
+            .sm\:flex-row {
+                flex-direction: row;
+            }
+        }
+        
+        @media (min-width: 768px) {
+            .md\:flex {
+                display: flex;
+            }
+            
+            .md\:hidden {
+                display: none;
+            }
+            
+            .md\:flex-row {
+                flex-direction: row;
+            }
+            
+            .md\:w-1\/4 {
+                width: 25%;
+            }
+            
+            .md\:w-3\/4 {
+                width: 75%;
+            }
+            
+            .md\:grid-cols-2 {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+            
+            .md\:grid-cols-3 {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+            
+            .md\:justify-start {
+                justify-content: flex-start;
+            }
+            
+            .md\:text-3xl {
+                font-size: 1.875rem;
+                line-height: 2.25rem;
+            }
+            
+            .md\:text-5xl {
+                font-size: 3rem;
+                line-height: 1;
+            }
+            
+            .md\:text-xl {
+                font-size: 1.25rem;
+                line-height: 1.75rem;
+            }
+            
+            .md\:py-4 {
+                padding-top: 1rem;
+                padding-bottom: 1rem;
+            }
+            
+            .md\:py-12 {
+                padding-top: 3rem;
+                padding-bottom: 3rem;
+            }
+            
+            .md\:py-24 {
+                padding-top: 6rem;
+                padding-bottom: 6rem;
+            }
+            
+            .md\:mb-0 {
+                margin-bottom: 0;
+            }
+            
+            .md\:block {
+                display: block;
+            }
+        }
+        
+        /* 隐藏/显示元素 */
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body class="bg-apple-gray text-gray-800 min-h-screen flex flex-col">
+    <!-- 顶部导航栏 -->
+    <header class="bg-white apple-shadow sticky top-0 z-40">
+        <div class="container mx-auto px-4 py-3 md:py-4 flex flex-wrap items-center justify-between">
+            <h1 class="text-2xl md:text-3xl font-bold text-apple-blue">No Mercy Game</h1>
+            
+            <div class="flex items-center">
+                <!-- 桌面端导航 -->
+                <nav class="hidden md:flex space-x-6">
+                    <a href="#introduction" class="hover-apple-blue font-medium transition-colors" data-lang-key="nav_intro">Game Introduction</a>
+                    <a href="#features" class="hover-apple-blue font-medium transition-colors" data-lang-key="nav_features">Game Features</a>
+                    <a href="#faq" class="hover-apple-blue font-medium transition-colors" data-lang-key="nav_faq">FAQ</a>
+                    <a href="#roadmap" class="hover-apple-blue font-medium transition-colors" data-lang-key="nav_roadmap">Development Roadmap</a>
+                </nav>
+                
+                <!-- 语言选择器 -->
+                <div class="language-selector ml-6">
+                    <select id="language-select">
+                        <option value="en">English</option>
+                        <option value="zh">中文</option>
+                    </select>
+                </div>
+                
+                <!-- 移动端汉堡菜单按钮 -->
+                <button id="mobile-menu-button" class="md:hidden p-2 ml-3" aria-label="Menu">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </header>
+    
+    <!-- 移动端导航菜单 -->
+    <div id="mobile-menu" class="mobile-nav flex-col items-center justify-center">
+        <button id="close-menu" class="absolute top-4 right-4 text-white" aria-label="Close menu">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-8 w-8">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+        </button>
+        <nav class="flex flex-col space-y-6 text-center">
+            <a href="#introduction" class="text-white text-xl hover:text-apple-blue transition-colors" data-lang-key="nav_intro">Game Introduction</a>
+            <a href="#features" class="text-white text-xl hover:text-apple-blue transition-colors" data-lang-key="nav_features">Game Features</a>
+            <a href="#faq" class="text-white text-xl hover:text-apple-blue transition-colors" data-lang-key="nav_faq">FAQ</a>
+            <a href="#roadmap" class="text-white text-xl hover:text-apple-blue transition-colors" data-lang-key="nav_roadmap">Development Roadmap</a>
+        </nav>
+    </div>
+    
+    <!-- 主横幅 -->
+    <section class="bg-gradient-to-r from-gray-800 to-gray-900 text-white py-12 md:py-24">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl md:text-5xl font-bold mb-4" data-lang-key="hero_title">Experience the Immersive Narrative of No Mercy Game</h2>
+            <p class="text-lg md:text-xl mb-8 max-w-3xl mx-auto" data-lang-key="hero_desc">A 3D interactive narrative game focusing on family relationships and values. Every choice you make will affect the story's progression.</p>
+            <a href="https://zeratgames.itch.io/no-mercy" target="_blank" rel="noopener noreferrer" class="apple-button inline-block text-lg" data-lang-key="btn_buy">Buy on ITCH.io</a>
+        </div>
+    </section>
+    
+    <main class="flex-grow container mx-auto px-4 py-8 md:py-12">
+        <!-- 游戏介绍部分 -->
+        <section id="introduction" class="mb-16 scroll-mt-20">
+            <h2 class="text-2xl md:text-3xl font-bold mb-6 text-apple-blue" data-lang-key="intro_title">Game Introduction</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="apple-card p-6">
+                    <h3 class="text-xl font-semibold mb-4" data-lang-key="about_game_title">About the Game</h3>
+                    <p class="mb-4" data-lang-key="about_game_p1">No Mercy Game is a 3D interactive narrative game with family relationships as its core theme. Players will face various choices that directly affect the direction of the story. Through immersive storytelling, the game leads players to explore complex family relationships, personal values, and moral dilemmas.</p>
+                    <p data-lang-key="about_game_p2">The game uses advanced 3D graphics technology and a dynamic narrative system to ensure each player gets a unique gaming experience. Based on your choices, the game will present different endings and story development paths.</p>
+                </div>
+                <div class="apple-card p-6">
+                    <h3 class="text-xl font-semibold mb-4" data-lang-key="game_background_title">Game Background</h3>
+                    <p class="mb-4" data-lang-key="game_background_p1">The game is set in a modern family environment where the protagonist faces challenges of family conflicts, personal growth, and moral choices. As the plot deepens, players will uncover family secrets and decide how to handle these complex emotional and relationship issues.</p>
+                    <p data-lang-key="game_background_p2">Each character has a rich backstory and motivation. Player decisions will affect their development and relationships with each other, ultimately leading to multiple possible endings.</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 游戏特点部分 -->
+        <section id="features" class="mb-16 scroll-mt-20">
+            <h2 class="text-2xl md:text-3xl font-bold mb-6 text-apple-blue" data-lang-key="features_title">Game Features</h2>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="apple-card p-6">
+                    <div class="flex items-center mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-apple-blue mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                        </svg>
+                        <h3 class="text-lg font-semibold" data-lang-key="feature1_title">Branching Narrative</h3>
+                    </div>
+                    <p data-lang-key="feature1_desc">Multiple narrative branches and endings, where each player choice impacts the game world and character development.</p>
+                </div>
+                
+                <div class="apple-card p-6">
+                    <div class="flex items-center mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-apple-blue mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <h3 class="text-lg font-semibold" data-lang-key="feature2_title">Deep Characters</h3>
+                    </div>
+                    <p data-lang-key="feature2_desc">Each character has a rich backstory and multi-layered personality that is gradually revealed as the game progresses.</p>
+                </div>
+                
+                <div class="apple-card p-6">
+                    <div class="flex items-center mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-apple-blue mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                        </svg>
+                        <h3 class="text-lg font-semibold" data-lang-key="feature3_title">Immersive Graphics</h3>
+                    </div>
+                    <p data-lang-key="feature3_desc">Beautiful 3D environments and character designs, combined with dynamic lighting effects, provide an immersive visual experience.</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 常见问题部分 -->
+        <section id="faq" class="mb-16 scroll-mt-20">
+            <h2 class="text-2xl md:text-3xl font-bold mb-6 text-apple-blue" data-lang-key="faq_title">Frequently Asked Questions</h2>
+            <div class="space-y-6">
+                <div class="apple-card p-6">
+                    <h3 class="text-xl font-semibold mb-2" data-lang-key="faq1_q">Is this game suitable for all age groups?</h3>
+                    <p data-lang-key="faq1_a">No, the content of No Mercy Game is primarily targeted at adult players. The game involves complex family relationships and moral choices, and may contain emotional conflicts and adult situations.</p>
+                </div>
+                
+                <div class="apple-card p-6">
+                    <h3 class="text-xl font-semibold mb-2" data-lang-key="faq2_q">How long does a single playthrough take?</h3>
+                    <p data-lang-key="faq2_a">A single playthrough takes approximately 4-6 hours, but since the game has multiple branches and endings, players may need to play multiple times to experience all content, for a total gameplay time of over 20 hours.</p>
+                </div>
+                
+                <div class="apple-card p-6">
+                    <h3 class="text-xl font-semibold mb-2" data-lang-key="faq3_q">Which platforms does the game support?</h3>
+                    <p data-lang-key="faq3_a">Currently, the game supports Windows, macOS, and Linux platforms. We may consider releasing console versions in the future. Please follow our development roadmap for specific timelines.</p>
+                </div>
+                
+                <div class="apple-card p-6">
+                    <h3 class="text-xl font-semibold mb-2" data-lang-key="faq4_q">Does the game have multilingual support?</h3>
+                    <p data-lang-key="faq4_a">The current version supports English and Chinese. We plan to add more language options in future updates, including Japanese, Korean, German, French, and Spanish.</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 开发路线图部分 -->
+        <section id="roadmap" class="mb-8 scroll-mt-20">
+            <h2 class="text-2xl md:text-3xl font-bold mb-6 text-apple-blue" data-lang-key="roadmap_title">Development Roadmap</h2>
+            <div class="apple-card p-6">
+                <div class="relative">
+                    <!-- 时间线 -->
+                    <div class="hidden md:block absolute left-0 w-1 bg-apple-blue h-full transform translate-x-1/2"></div>
+                    
+                    <!-- 时间点 -->
+                    <div class="space-y-12">
+                        <div class="flex flex-col md:flex-row">
+                            <div class="md:w-1/4 flex items-center justify-center md:justify-start mb-4 md:mb-0">
+                                <div class="bg-apple-blue text-white px-3 py-1 rounded-full font-medium z-10">2023 Q4</div>
+                            </div>
+                            <div class="md:w-3/4">
+                                <h3 class="text-lg font-semibold mb-2" data-lang-key="roadmap1_title">Initial Release</h3>
+                                <p data-lang-key="roadmap1_desc">First complete version release, including the main storyline and three possible endings.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex flex-col md:flex-row">
+                            <div class="md:w-1/4 flex items-center justify-center md:justify-start mb-4 md:mb-0">
+                                <div class="bg-apple-blue text-white px-3 py-1 rounded-full font-medium z-10">2024 Q1</div>
+                            </div>
+                            <div class="md:w-3/4">
+                                <h3 class="text-lg font-semibold mb-2" data-lang-key="roadmap2_title">Content Updates and Optimization</h3>
+                                <p data-lang-key="roadmap2_desc">Addition of new side stories and character backgrounds, optimization of game performance and user interface.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex flex-col md:flex-row">
+                            <div class="md:w-1/4 flex items-center justify-center md:justify-start mb-4 md:mb-0">
+                                <div class="bg-apple-blue text-white px-3 py-1 rounded-full font-medium z-10">2024 Q2</div>
+                            </div>
+                            <div class="md:w-3/4">
+                                <h3 class="text-lg font-semibold mb-2" data-lang-key="roadmap3_title">Multilingual Support</h3>
+                                <p data-lang-key="roadmap3_desc">Addition of more language options to expand the game's global accessibility.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex flex-col md:flex-row">
+                            <div class="md:w-1/4 flex items-center justify-center md:justify-start mb-4 md:mb-0">
+                                <div class="bg-apple-blue text-white px-3 py-1 rounded-full font-medium z-10">2024 Q3-Q4</div>
+                            </div>
+                            <div class="md:w-3/4">
+                                <h3 class="text-lg font-semibold mb-2" data-lang-key="roadmap4_title">Expanded Content and Platforms</h3>
+                                <p data-lang-key="roadmap4_desc">Launch of DLC expanded content, exploring the stories of secondary characters, and consideration of console versions.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 订阅通知部分 -->
+        <section class="mb-16">
+            <div class="apple-card p-8 text-center">
+                <h2 class="text-2xl font-bold mb-4" data-lang-key="newsletter_title">Get the Latest Game Updates</h2>
+                <p class="mb-6" data-lang-key="newsletter_desc">Subscribe to our newsletter for timely updates on game developments, promotions, and developer insights.</p>
+                <form class="max-w-lg mx-auto">
+                    <div class="flex flex-col sm:flex-row gap-3">
+                        <input type="email" placeholder="Your email address" class="flex-grow px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-apple-blue" required data-lang-key="email_placeholder" data-lang-attr="placeholder">
+                        <button type="submit" class="apple-button whitespace-nowrap" data-lang-key="btn_subscribe">Subscribe</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+    
+    <footer class="bg-white apple-shadow py-8">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-6">
+                <h2 class="text-xl font-bold text-apple-blue mb-2">No Mercy Game</h2>
+                <p class="text-sm text-gray-600" data-lang-key="footer_tagline">Explore family relationships and values through an interactive narrative experience</p>
+            </div>
+            
+            <div class="flex justify-center space-x-6 mb-8">
+                <a href="#" class="text-gray-600 hover:text-apple-blue transition-colors">
+                    <span class="sr-only">Twitter</span>
+                    <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"></path>
+                    </svg>
+                </a>
+                
+                <a href="#" class="text-gray-600 hover:text-apple-blue transition-colors">
+                    <span class="sr-only">Discord</span>
+                    <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M20.317 4.492c-1.53-.69-3.17-1.2-4.885-1.49a.075.075 0 0 0-.079.036c-.21.39-.444.998-.608 1.435a19.607 19.607 0 0 0-5.91 0c-.164-.437-.397-1.046-.608-1.435a.077.077 0 0 0-.079-.036c-1.714.29-3.354.8-4.885 1.491a.07.07 0 0 0-.032.027C.533 9.093-.32 13.555.099 17.961a.08.08 0 0 0 .031.055 20.03 20.03 0 0 0 6.03 3.055.075.075 0 0 0 .083-.026c.367-.504.706-1.036 1.01-1.592a.076.076 0 0 0-.044-.106 13.209 13.209 0 0 1-1.872-.892.075.075 0 0 1-.008-.125c.126-.094.252-.19.372-.287a.075.075 0 0 1 .078-.01c3.927 1.789 8.18 1.789 12.062 0a.075.075 0 0 1 .079.009c.12.098.245.195.372.288a.075.075 0 0 1-.006.125c-.598.35-1.22.645-1.873.892a.076.076 0 0 0-.041.106c.313.556.646 1.087 1.008 1.592a.077.077 0 0 0 .084.028 19.963 19.963 0 0 0 6.03-3.055.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.278c-1.182 0-2.157-1.09-2.157-2.434s.955-2.434 2.157-2.434c1.211 0 2.176 1.09 2.157 2.434-.02 1.345-.956 2.434-2.157 2.434zm7.975 0c-1.183 0-2.157-1.09-2.157-2.434s.955-2.434 2.157-2.434c1.211 0 2.176 1.09 2.157 2.434-.02 1.345-.946 2.434-2.157 2.434z"></path>
+                    </svg>
+                </a>
+                
+                <a href="#" class="text-gray-600 hover:text-apple-blue transition-colors">
+                    <span class="sr-only">Steam</span>
+                    <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M11.979 0C5.678 0 .511 4.86.022 11.037l6.432 2.658c.545-.371 1.203-.59 1.912-.59.063 0 .125.004.188.006l2.861-4.142V8.91c0-2.495 2.028-4.524 4.524-4.524 2.494 0 4.524 2.031 4.524 4.527s-2.03 4.525-4.524 4.525h-.105l-4.076 2.911c0 .052.004.105.004.159 0 1.875-1.515 3.396-3.39 3.396-1.635 0-3.016-1.173-3.331-2.727L.436 15.27C1.862 20.307 6.486 24 11.979 24c6.627 0 11.999-5.373 11.999-12S18.605 0 11.979 0zM7.54 18.21l-1.473-.61c.262.543.714.999 1.314 1.25 1.297.539 2.793-.076 3.332-1.375.263-.63.264-1.319.005-1.949s-.75-1.121-1.377-1.383c-.624-.26-1.29-.193-1.878.1l1.523.63c.956.4 1.409 1.5 1.009 2.455-.397.957-1.497 1.41-2.454 1.012H7.54zm11.415-9.303c0-1.662-1.353-3.015-3.015-3.015-1.665 0-3.015 1.353-3.015 3.015 0 1.665 1.35 3.015 3.015 3.015 1.663 0 3.015-1.35 3.015-3.015zm-5.273-.005c0-1.252 1.013-2.266 2.265-2.266 1.249 0 2.266 1.014 2.266 2.266 0 1.251-1.017 2.265-2.266 2.265-1.253 0-2.265-1.014-2.265-2.265z"></path>
+                    </svg>
+                </a>
+            </div>
+            
+            <div class="text-center text-sm text-gray-600">
+                <p class="mb-2" data-lang-key="disclaimer">Disclaimer: This website only provides information and is not the official developer website.</p>
+                <p>&copy; 2023 No Mercy Game Info. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // 移动端菜单功能
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const closeMenuButton = document.getElementById('close-menu');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.add('active');
+            document.body.style.overflow = 'hidden'; // 防止背景滚动
+        });
+        
+        closeMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+            document.body.style.overflow = ''; // 恢复滚动
+        });
+        
+        // 点击链接后关闭菜单
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = ''; // 恢复滚动
+            });
+        });
+        
+        // 语言本地化
+        const translations = {
+            en: {
+                // 导航
+                nav_intro: "Game Introduction",
+                nav_features: "Game Features",
+                nav_faq: "FAQ",
+                nav_roadmap: "Development Roadmap",
+                
+                // 主横幅
+                hero_title: "Experience the Immersive Narrative of No Mercy Game",
+                hero_desc: "A 3D interactive narrative game focusing on family relationships and values. Every choice you make will affect the story's progression.",
+                btn_buy: "Buy on ITCH.io",
+                
+                // 游戏介绍
+                intro_title: "Game Introduction",
+                about_game_title: "About the Game",
+                about_game_p1: "No Mercy Game is a 3D interactive narrative game with family relationships as its core theme. Players will face various choices that directly affect the direction of the story. Through immersive storytelling, the game leads players to explore complex family relationships, personal values, and moral dilemmas.",
+                about_game_p2: "The game uses advanced 3D graphics technology and a dynamic narrative system to ensure each player gets a unique gaming experience. Based on your choices, the game will present different endings and story development paths.",
+                
+                game_background_title: "Game Background",
+                game_background_p1: "The game is set in a modern family environment where the protagonist faces challenges of family conflicts, personal growth, and moral choices. As the plot deepens, players will uncover family secrets and decide how to handle these complex emotional and relationship issues.",
+                game_background_p2: "Each character has a rich backstory and motivation. Player decisions will affect their development and relationships with each other, ultimately leading to multiple possible endings.",
+                
+                // 游戏特点
+                features_title: "Game Features",
+                feature1_title: "Branching Narrative",
+                feature1_desc: "Multiple narrative branches and endings, where each player choice impacts the game world and character development.",
+                feature2_title: "Deep Characters",
+                feature2_desc: "Each character has a rich backstory and multi-layered personality that is gradually revealed as the game progresses.",
+                feature3_title: "Immersive Graphics",
+                feature3_desc: "Beautiful 3D environments and character designs, combined with dynamic lighting effects, provide an immersive visual experience.",
+                
+                // 常见问题
+                faq_title: "Frequently Asked Questions",
+                faq1_q: "Is this game suitable for all age groups?",
+                faq1_a: "No, the content of No Mercy Game is primarily targeted at adult players. The game involves complex family relationships and moral choices, and may contain emotional conflicts and adult situations.",
+                faq2_q: "How long does a single playthrough take?",
+                faq2_a: "A single playthrough takes approximately 4-6 hours, but since the game has multiple branches and endings, players may need to play multiple times to experience all content, for a total gameplay time of over 20 hours.",
+                faq3_q: "Which platforms does the game support?",
+                faq3_a: "Currently, the game supports Windows, macOS, and Linux platforms. We may consider releasing console versions in the future. Please follow our development roadmap for specific timelines.",
+                faq4_q: "Does the game have multilingual support?",
+                faq4_a: "The current version supports English and Chinese. We plan to add more language options in future updates, including Japanese, Korean, German, French, and Spanish.",
+                
+                // 开发路线图
+                roadmap_title: "Development Roadmap",
+                roadmap1_title: "Initial Release",
+                roadmap1_desc: "First complete version release, including the main storyline and three possible endings.",
+                roadmap2_title: "Content Updates and Optimization",
+                roadmap2_desc: "Addition of new side stories and character backgrounds, optimization of game performance and user interface.",
+                roadmap3_title: "Multilingual Support",
+                roadmap3_desc: "Addition of more language options to expand the game's global accessibility.",
+                roadmap4_title: "Expanded Content and Platforms",
+                roadmap4_desc: "Launch of DLC expanded content, exploring the stories of secondary characters, and consideration of console versions.",
+                
+                // 订阅区域
+                newsletter_title: "Get the Latest Game Updates",
+                newsletter_desc: "Subscribe to our newsletter for timely updates on game developments, promotions, and developer insights.",
+                email_placeholder: "Your email address",
+                btn_subscribe: "Subscribe",
+                
+                // 页脚
+                footer_tagline: "Explore family relationships and values through an interactive narrative experience",
+                disclaimer: "Disclaimer: This website only provides information and is not the official developer website."
+            },
+            zh: {
+                // 导航
+                nav_intro: "游戏介绍",
+                nav_features: "游戏特点",
+                nav_faq: "常见问题",
+                nav_roadmap: "开发路线图",
+                
+                // 主横幅
+                hero_title: "体验无情游戏的沉浸式叙事",
+                hero_desc: "一款关注家庭关系与价值观的3D互动叙事游戏，你的每个选择都将影响故事的发展方向",
+                btn_buy: "在ICTH.io上购买",
+                
+                // 游戏介绍
+                intro_title: "游戏介绍",
+                about_game_title: "关于游戏",
+                about_game_p1: "《No Mercy Game》是一款以家庭关系为核心主题的3D互动叙事游戏。玩家将面临各种选择，这些选择将直接影响故事的发展方向。游戏通过沉浸式的叙事方式，带领玩家探索复杂的家庭关系、个人价值观和道德抉择。",
+                about_game_p2: "游戏采用先进的3D图形技术和动态叙事系统，确保每位玩家都能获得独特的游戏体验。根据你的选择，游戏将呈现不同的结局和故事发展路径。",
+                
+                game_background_title: "游戏背景",
+                game_background_p1: "游戏设定在一个现代家庭环境中，主角面临家庭冲突、个人成长和道德抉择的挑战。随着剧情的深入，玩家将揭开家族秘密，并决定如何处理这些复杂的情感和关系问题。",
+                game_background_p2: "每个角色都有丰富的背景故事和动机，玩家的决策将影响他们的发展和相互关系，最终导向多种可能的结局。",
+                
+                // 游戏特点
+                features_title: "游戏特点",
+                feature1_title: "分支叙事",
+                feature1_desc: "多重叙事分支和结局，玩家的每个选择都会影响游戏世界和角色发展。",
+                feature2_title: "深度角色",
+                feature2_desc: "每个角色都有丰富的背景故事和多层次性格，随着游戏进程逐渐揭示。",
+                feature3_title: "沉浸式图形",
+                feature3_desc: "精美的3D环境和角色设计，配合动态光影效果，提供身临其境的视觉体验。",
+                
+                // 常见问题
+                faq_title: "常见问题",
+                faq1_q: "这款游戏适合所有年龄层的玩家吗？",
+                faq1_a: "不，《No Mercy Game》的内容主要面向成年玩家。游戏涉及复杂的家庭关系和道德抉择主题，可能包含情感冲突和成人情境。",
+                faq2_q: "一次游戏大约需要多长时间？",
+                faq2_a: "单次游戏流程约为4-6小时，但由于游戏具有多重分支和结局，玩家可能需要多次游玩才能体验所有内容，总游戏时间可达20小时以上。",
+                faq3_q: "游戏支持哪些平台？",
+                faq3_a: "目前游戏支持Windows、macOS和Linux平台。未来可能会考虑推出主机版本，具体时间表请关注我们的开发路线图更新。",
+                faq4_q: "游戏有多语言支持吗？",
+                faq4_a: "当前版本支持英语和中文。我们计划在未来更新中添加更多语言选项，包括日语、韩语、德语、法语和西班牙语等。",
+                
+                // 开发路线图
+                roadmap_title: "开发路线图",
+                roadmap1_title: "初始版本发布",
+                roadmap1_desc: "首个完整版本发布，包含主要故事线和三个可能的结局。",
+                roadmap2_title: "内容更新与优化",
+                roadmap2_desc: "添加新的支线剧情和角色背景故事，优化游戏性能和用户界面。",
+                roadmap3_title: "多语言支持",
+                roadmap3_desc: "添加更多语言选项，扩大游戏的全球可访问性。",
+                roadmap4_title: "扩展内容与平台",
+                roadmap4_desc: "推出DLC扩展内容，探索次要角色的故事，并考虑发布主机版本。",
+                
+                // 订阅区域
+                newsletter_title: "获取最新游戏更新",
+                newsletter_desc: "订阅我们的通讯，及时了解游戏更新、优惠活动和开发者见解。",
+                email_placeholder: "您的电子邮箱",
+                btn_subscribe: "订阅通讯",
+                
+                // 页脚
+                footer_tagline: "探索家庭关系与价值观的互动叙事体验",
+                disclaimer: "免责声明：本网站仅提供游戏信息，并非官方开发者网站。"
+            }
+        };
+        
+        // 语言切换功能
+        const languageSelect = document.getElementById('language-select');
+        
+        // 设置语言
+        function setLanguage(language) {
+            // 设置HTML lang属性
+            document.documentElement.lang = language;
+            
+            // 更新所有带有data-lang-key属性的元素
+            const elements = document.querySelectorAll('[data-lang-key]');
+            elements.forEach(element => {
+                const key = element.getAttribute('data-lang-key');
+                if (translations[language][key]) {
+                    // 检查是否有特殊属性需要翻译
+                    const langAttr = element.getAttribute('data-lang-attr');
+                    if (langAttr) {
+                        element.setAttribute(langAttr, translations[language][key]);
+                    } else {
+                        element.textContent = translations[language][key];
+                    }
+                }
+            });
+            
+            // 保存语言设置到本地存储
+            localStorage.setItem('preferredLanguage', language);
+        }
+        
+        // 语言切换事件
+        languageSelect.addEventListener('change', (e) => {
+            setLanguage(e.target.value);
+        });
+        
+        // 页面加载时初始化语言
+        document.addEventListener('DOMContentLoaded', () => {
+            // 检查本地存储中的语言偏好
+            const savedLanguage = localStorage.getItem('preferredLanguage');
+            const defaultLanguage = 'en'; // 默认英语
+            
+            // 设置语言选择器的值
+            languageSelect.value = savedLanguage || defaultLanguage;
+            
+            // 应用语言
+            setLanguage(languageSelect.value);
+        });
+        
+        // 添加结构化数据以提升SEO
+        const schemaScript = document.createElement('script');
+        schemaScript.type = 'application/ld+json';
+        schemaScript.text = JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "VideoGame",
+            "name": "No Mercy Game",
+            "description": "A 3D interactive narrative game focusing on family relationships and values. Players will face various choices that affect the story's progression.",
+            "genre": ["Interactive Fiction", "Narrative", "Adventure"],
+            "applicationCategory": "Game",
+            "operatingSystem": ["Windows", "macOS", "Linux"],
+            "offers": {
+                "@type": "Offer",
+                "availability": "https://schema.org/InStock",
+                "price": "19.99",
+                "priceCurrency": "USD"
+            }
+        });
+        document.head.appendChild(schemaScript);
+    </script>
+</body>
+</html> 
